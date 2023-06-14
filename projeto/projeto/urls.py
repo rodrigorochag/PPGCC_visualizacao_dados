@@ -26,7 +26,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 #    path('graficos/',TemplateView.as_view(template_name="graficos.html")),
 #    path('graficos/',views.graficos, name="graficos"),
-    path('graficos/', views.graficos, name='graficos')
+    path('graficos/', views.graficos, name='graficos'),
+    path('aluno/', views.aluno, name='aluno'),
+    path('fonte/', views.fonte, name='fonte')
+
+
+
 
 
 ]

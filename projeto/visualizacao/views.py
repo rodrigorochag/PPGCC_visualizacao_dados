@@ -28,15 +28,15 @@ def graficos(request): # pega o grafico do arquivo codigo_graficos/graficos.py d
        'co2':graph_co2_emissions_brazil,
        'desmatamento_brazil':graph_desmatamento_brazil
     }
-
+   
     return render(request, 'graficos.html', context)
 
 
 def aluno(request):
     return render(request, 'aluno.html')
 
-def fonte_dados(request):
-    return render(request, 'fonte_dados.html')
+def fonte(request):
+    return render(request, 'fonte.html')
 
 
 

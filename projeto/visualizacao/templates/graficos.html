@@ -1,11 +1,35 @@
 {% extends 'main.html' %}
 {% load static %}   
+{% block title %}Meu Título Personalizado{% endblock %}
+
+
 
 {% block content %}   
-    
+<!-- Conteúdo específico do template filho -->
+<!-- Aqui você pode incluir os gráficos e outros elementos -->    
+<center><h1>Trabalho final de Visualização de dados</h1>
+    <div id="primeiro_paragrafo">
+        <br>
+        <p>
+            As mudanças climáticas são um dos maiores desafios enfrentados pela humanidade atualmente. Elas são causadas principalmente pelo aumento das concentrações de gases de efeito estufa na atmosfera, resultantes das atividades humanas, como a queima de combustíveis fósseis, o desmatamento e o desflorestamento.
+        </div>
+        </p>
+    </div>
+    <br>
+    <p>
+        Um dos principais contribuintes para as mudanças climáticas é a emissão de dióxido de carbono (CO2) na atmosfera. O CO2 é liberado principalmente pela queima de combustíveis fósseis, como carvão, petróleo e gás natural, para gerar energia, transporte e processos industriais. Essas emissões são responsáveis pelo aumento do efeito estufa, que causa o aquecimento do planeta.
+        
+        Além das emissões de CO2, o desmatamento das florestas também desempenha um papel crucial nas mudanças climáticas. As florestas atuam como sumidouros de carbono, absorvendo o CO2 da atmosfera por meio do processo de fotossíntese. No entanto, quando as árvores são cortadas ou queimadas, o carbono armazenado nelas é liberado de volta à atmosfera, contribuindo para o aumento das concentrações de CO2.
+    </p></center>
     {{ temperatura|safe }}
-    {{ co2|safe }}
+
+    <div id="co2">
+     <p>Além de todos os maleficícios que a emissão crescente de CO2 gera na atmosfera, a alta constante no desmatamento florestal é também um fator muito preocupante, pois as florestas possuem diversos papeis importantes para a o planeta, sendo um agente que ajuda a decompor o CO2 na atmosfera, regular a temperatura e também para reter umidade e gerar mais preciptações no ambiente</p>{{ co2|safe }}</div>
+
+
+
     {{ desmatamento_brazil|safe }}
+    
+    
 
 {% endblock content %}
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident tenetur libero in possimus cupiditate eaque praesentium, eveniet ipsum reiciendis quas! Officiis error porro aliquam quia voluptatibus omnis atque saepe voluptatem.</p>
