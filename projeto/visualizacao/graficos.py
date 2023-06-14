@@ -5,7 +5,7 @@ import plotly.graph_objs as go
 from plotly.offline import plot
 
 
-
+"""
 def plot_series_temperatura():
     # Dados fornecidos
     years = list(range(1961, 2023))
@@ -33,9 +33,9 @@ def plot_series_temperatura():
 
     div = opy.plot(fig, auto_open=False, output_type='div')
 
-    return div
+    return div"""
 
-def plot_to_html():
+def mudanca_temperatura_brasil():
     # Dados fornecidos
     years = list(range(1961, 2023))
     temperatures = [0.167, -0.184, 0.158, -0.213, -0.075, 0.044, 0.073, -0.409, 0.331, 0.13, -0.134, 0.114, 0.443, -0.179,
@@ -50,9 +50,9 @@ def plot_to_html():
 
     # Configurar o layout do gráfico
     fig.update_layout(
-        plot_bgcolor='lightgreen',
+        plot_bgcolor='grey',
         
-        title='Mudança de temperatura no Brasil_plot_to_html',
+        title='Mudança de temperatura no Brasil',
         xaxis=dict(title='Ano'),
         yaxis=dict(title='Mudança de temperatura (°C)')
     )

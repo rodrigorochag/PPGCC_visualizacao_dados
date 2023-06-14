@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 
-from .graficos import plot_to_html, co2_emissions, desmatamento
+from .graficos import mudanca_temperatura_brasil, co2_emissions, desmatamento
 
 import plotly.graph_objs as go
 from plotly.offline import plot
@@ -18,20 +18,8 @@ from plotly.offline import plot
 
 
 
-
-"""
-def data_visualization(request): # envia para urls
-    return HttpResponse("Hello world! Trabalho final UFMG")
-"""
-
-"""
-def data_visualization(request): # Views -> urls (url_patterns)
-  template = loader.get_template('home.html')
-  return HttpResponse(template.render())"""
-
-
-def graficos(request): # pega o grafico do arquivo codigo_graficos/graficos.py da função plot_to_html()
-    graph_temperature_brazil = plot_to_html()
+def graficos(request): # pega o grafico do arquivo codigo_graficos/graficos.py da função mudanca_temperatura_brasil()
+    graph_temperature_brazil = mudanca_temperatura_brasil()
     graph_co2_emissions_brazil = co2_emissions()
     graph_desmatamento_brazil = desmatamento()
 
