@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 
-from .graficos import mudanca_temperatura_brasil, co2_emissions, desmatamento
+from .graficos import mudanca_temperatura_brasil, co2_emissions, desmatamento, barras
 
 import plotly.graph_objs as go
 from plotly.offline import plot
@@ -22,11 +22,14 @@ def graficos(request): # pega o grafico do arquivo codigo_graficos/graficos.py d
     graph_temperature_brazil = mudanca_temperatura_brasil()
     graph_co2_emissions_brazil = co2_emissions()
     graph_desmatamento_brazil = desmatamento()
+    graph_paises_barra = barras()
 
     context = {
        'temperatura':graph_temperature_brazil,
        'co2':graph_co2_emissions_brazil,
-       'desmatamento_brazil':graph_desmatamento_brazil
+       'desmatamento_brazil':graph_desmatamento_brazil,
+       'barras': graph_paises_barra
+       
     }
    
     return render(request, 'graficos.html', context)

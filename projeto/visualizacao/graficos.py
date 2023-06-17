@@ -3,7 +3,9 @@ from django.shortcuts import render
 import plotly.offline as opy
 import plotly.graph_objs as go
 from plotly.offline import plot
-
+import pandas as pd
+import plotly.express as px
+import pycountry
 
 """
 def plot_series_temperatura():
@@ -140,3 +142,47 @@ def desmatamento():
     return fig.to_html()
     #div = plot(fig, output_type='div')
     #return div
+
+
+
+
+
+
+def barras():
+        # Leitura do arquivo CSV
+    data = pd.read_csv('/home/netune/Documents/UFMG/VD/PPGCC_visualizacao_dados/projeto/visualizacao/dados/co2_emissions_kt_by_country.csv')
+
+    # Cálculo do total por país
+    total_por_pais = data.groupby('country_name')['value'].sum().reset_index()
+
+    # Ordenação em ordem decrescente pelo total
+    total_por_pais = total_por_pais.sort_values('value', ascending=False)
+
+    # Seleção dos 5 maiores valores com country_name não repetido
+    top_5 = total_por_pais.drop_duplicates(subset='country_name').head(5)
+
+    # Obtenção dos URLs das bandeiras para cada país
+    flags_urls = []
+    for country_name in top_5['country_name']:
+        try:
+            country = pycountry.countries.get(name=country_name)
+            flag_url = f"https://flagcdn.com/w20/{country.alpha_2.lower()}.png"
+            flags_urls.append(flag_url)
+        except AttributeError:
+            flags_urls.append('')
+
+    # Criação do gráfico de barras interativo com bandeiras
+    fig = px.bar(top_5, x='country_name', y='value', title='Top 5 Países com Maior Total de CO2 Emissões',
+                hover_data=['value'], color='country_name')
+
+    # Adição das bandeiras como imagens das barras
+    fig.update_layout(images=[dict(source=url, x=x_val, y=y_val, sizex=0.15, sizey=0.15, xanchor='center', yanchor='bottom')
+                            for url, x_val, y_val in zip(flags_urls, top_5['country_name'], top_5['value'])])
+
+    # Ajuste das configurações do layout
+    fig.update_layout(yaxis_title='Total de CO2 Emissões', xaxis_tickangle=-45, showlegend=False)
+
+    # Exibição do gráfico
+    #fig.show()
+
+    return fig.to_html()
